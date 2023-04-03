@@ -114,6 +114,8 @@ const App = () => (
 );
 ```
 
+Next.js에서는 Code Splitting을 알아서! 자동으로! 해준다고 한다.
+
 ### ❗️Tree Shaking
 
 코드를 빌드할 때도 실제로 쓰지 않는 코드를 제외
