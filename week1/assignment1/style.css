@@ -1,14 +1,36 @@
 @font-face {
-  font-family: "BMEuljirooraeorae";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/BMEuljirooraeorae.woff2")
+  font-family: "KCC-Ganpan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2")
     format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 * {
-  font-family: BMEuljirooraeorae;
+  font-family: KCC-Ganpan;
 }
 body {
+  width: 100%;
   color: red;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100px;
+  padding: 0 1rem;
+}
+
+header > img {
+  width: 50px;
+  height: 50px;
+}
+
+header > button {
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
 }
