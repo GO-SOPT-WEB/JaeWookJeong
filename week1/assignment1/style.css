@@ -30,7 +30,8 @@ html {
   height: 5rem;
 }
 
-.hamburger_button:hover .aside_menu {
+.hamburger_button:hover + .aside_menu,
+.aside_menu:hover {
   display: block;
 }
 
