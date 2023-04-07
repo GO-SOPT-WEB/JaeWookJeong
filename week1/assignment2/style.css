@@ -1,0 +1,182 @@
+@font-face {
+  font-family: "KCC-Ganpan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: KCC-Ganpan;
+  box-sizing: border-box;
+}
+
+html {
+  width: 37.5rem;
+  margin: 0 auto;
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0 1rem;
+}
+
+.main_wrapper {
+  width: 100%;
+}
+
+.section_wrapper {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  place-items: center;
+
+  width: 100%;
+
+  border: 1px solid black;
+  border-radius: 0.7rem;
+  box-shadow: 3px 3px 3px 3px #555555;
+}
+
+.today {
+  color: red;
+}
+
+.section_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo_check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+}
+
+.todo_num {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  color: white;
+
+  z-index: 10;
+}
+
+.image_heart {
+  width: 3rem;
+  height: 3rem;
+
+  filter: invert(70%) sepia(70%) saturate(564%) hue-rotate(163deg)
+    brightness(90%) contrast(93%);
+}
+
+.todo_list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  margin: 3rem 0;
+}
+
+.todo_header {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+
+  font-size: 1.5rem;
+}
+
+.todo-list_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.todo_heart {
+  width: 3rem;
+  height: 3rem;
+}
+
+.todo_plus {
+  width: 2rem;
+  height: 2rem;
+
+  margin-left: 1rem;
+}
+
+.todo_item {
+  display: flex;
+  align-items: center;
+
+  font-size: 1.2rem;
+}
+
+.name h1 {
+  color: skyblue;
+}
+
+.sopt h1 {
+  color: blue;
+}
+
+.operation h1 {
+  color: orange;
+}
+
+.heart--active {
+  filter: invert(70%) sepia(70%) saturate(564%) hue-rotate(163deg)
+    brightness(90%) contrast(93%);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+
+  width: 100%;
+}
+footer img {
+  width: 3rem;
+  height: 3rem;
+}
+
+button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 3rem;
+
+  border: 1px solid skyblue;
+  border-radius: 0.7rem;
+  background-color: aqua;
+  font-size: 2rem;
+
+  box-shadow: 3px 3px 3px 3px #555555;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 37.5rem) {
+  .todo_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10rem;
+
+    height: 50rem;
+  }
+}
