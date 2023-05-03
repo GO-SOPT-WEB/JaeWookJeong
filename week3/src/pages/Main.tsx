@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Header, Nav } from "../components";
+import { Header, ItemList, Nav } from "../components";
 
 const Main = () => {
   const [count, setCount] = useState(5);
@@ -23,6 +23,7 @@ const Main = () => {
     <>
       <Header count={count} />
       <Nav handleChangeCount={handleChangeCount} />
+      <ItemList />
     </>
   );
 };
