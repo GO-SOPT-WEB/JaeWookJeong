@@ -1,12 +1,17 @@
 import styled from "styled-components";
 import { Button } from "./common";
 
-const Header = () => {
+interface HeaderProps {
+  count: number;
+}
+const Header = (props: HeaderProps) => {
+  const { count } = props;
+
   return (
     <Wrapper>
       <TitleBlock>
         <HeaderTitle>나라 맞추기</HeaderTitle>
-        <ScoreText>1 / 1</ScoreText>
+        <ScoreText>0 / {count}</ScoreText>
       </TitleBlock>
       <ButtonStyle>
         <Button text="reset" />

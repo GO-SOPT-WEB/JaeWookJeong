@@ -1,13 +1,20 @@
 import styled from "styled-components";
 import { Button } from "./common";
 
-const Nav = () => {
+interface NavProps {
+  handleChangeCount: (mode: string) => void;
+}
+
+const Nav = (props: NavProps) => {
+  const { handleChangeCount } = props;
   return (
-    <Wrapper>
-      <Button text="EASY" />
-      <Button text="NORMAL" />
-      <Button text="HARD" />
-    </Wrapper>
+    handleChangeCount && (
+      <Wrapper>
+        <Button text="EASY" handleChangeCount={handleChangeCount} />
+        <Button text="NORMAL" handleChangeCount={handleChangeCount} />
+        <Button text="HARD" handleChangeCount={handleChangeCount} />
+      </Wrapper>
+    )
   );
 };
 
@@ -18,4 +25,5 @@ const Wrapper = styled.div`
   justify-content: center;
 
   width: 100%;
+  padding: 1rem 0;
 `;
