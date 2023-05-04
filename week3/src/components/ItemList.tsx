@@ -1,18 +1,19 @@
 import styled from "styled-components";
 import { Item } from ".";
-import ITEM_DATA from "../constants/ItemData";
+import { itemDataProps } from "../types/cardList";
 
 interface ItemListProps {
-  mode: string;
+  count: number;
+  pasteDataList: itemDataProps[];
 }
 
 const ItemList = (props: ItemListProps) => {
-  const { mode } = props;
-  console.log(mode);
+  const { count, pasteDataList } = props;
+
   return (
     <Wrapper>
-      {ITEM_DATA.map(({ src, alt, id }) => (
-        <Item key={id} idx={id} src={src} alt={alt} />
+      {pasteDataList.slice(0, count * 2).map(({ src, alt }, idx) => (
+        <Item key={idx} idx={idx} src={src} alt={alt} count={count} />
       ))}
     </Wrapper>
   );
