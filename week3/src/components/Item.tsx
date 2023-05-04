@@ -5,10 +5,12 @@ interface ItemProps {
   idx: number;
   src: string;
   alt: string;
+  count: number;
 }
 const Item = (props: ItemProps) => {
-  const { idx, src, alt } = props;
-  const [isFliped, setIsFliped] = useState(Array(10).fill(false));
+  const { idx, src, alt, count } = props;
+  const [isFliped, setIsFliped] = useState(Array(count * 2).fill(false));
+
   const copyFliped = [...isFliped];
 
   const handleFlip = (id: number) => {
@@ -18,10 +20,10 @@ const Item = (props: ItemProps) => {
 
   return (
     <Wrapper>
-      {isFliped[idx - 1] ? (
-        <Image src={src} alt={alt} onClick={() => handleFlip(idx - 1)} />
+      {isFliped[idx] ? (
+        <Image src={src} alt={alt} onClick={() => handleFlip(idx)} />
       ) : (
-        <NonFlip onClick={() => handleFlip(idx - 1)} />
+        <NonFlip onClick={() => handleFlip(idx)} />
       )}
     </Wrapper>
   );
