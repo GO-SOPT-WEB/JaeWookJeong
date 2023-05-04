@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 interface ButtonProps {
   text: string;
-  handleChangeCount?: (mode: string) => void;
+  handleChangeCount: (mode: string) => void;
 }
 const Button = (props: ButtonProps) => {
   const { text, handleChangeCount } = props;
-  return <Wrapper onClick={() => handleChangeCount?.(text)}>{text}</Wrapper>;
+  return <Wrapper onClick={() => handleChangeCount(text)}>{text}</Wrapper>;
 };
 
 export default Button;
