@@ -10,7 +10,13 @@ import {
   Usa,
 } from "../assets";
 
-const ITEM_DATA = [
+interface itemDataProps {
+  id: number;
+  src: string;
+  alt: string;
+}
+
+const ITEM_DATA: itemDataProps[] = [
   {
     id: 1,
     src: Brazil,
