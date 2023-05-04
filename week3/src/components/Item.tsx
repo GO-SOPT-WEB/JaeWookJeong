@@ -1,14 +1,28 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 interface ItemProps {
+  idx: number;
   src: string;
   alt: string;
 }
 const Item = (props: ItemProps) => {
-  const { src, alt } = props;
+  const { idx, src, alt } = props;
+  const [isFliped, setIsFliped] = useState(Array(10).fill(false));
+  const copyFliped = [...isFliped];
+
+  const handleFlip = (id: number) => {
+    copyFliped[id] = !copyFliped[id];
+    setIsFliped(copyFliped);
+  };
+
   return (
     <Wrapper>
-      <Image src={src} alt={alt} />
+      {isFliped[idx - 1] ? (
+        <Image src={src} alt={alt} onClick={() => handleFlip(idx - 1)} />
+      ) : (
+        <NonFlip onClick={() => handleFlip(idx - 1)} />
+      )}
     </Wrapper>
   );
 };
@@ -24,4 +38,11 @@ const Wrapper = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 100%;
+`;
+
+const NonFlip = styled.div`
+  width: 100%;
+  height: 100%;
+
+  background-color: ${({ theme }) => theme.colors.Color_Coral};
 `;

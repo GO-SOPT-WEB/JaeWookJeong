@@ -2,11 +2,17 @@ import styled from "styled-components";
 import { Item } from ".";
 import ITEM_DATA from "../constants/ItemData";
 
-const ItemList = () => {
+interface ItemListProps {
+  mode: string;
+}
+
+const ItemList = (props: ItemListProps) => {
+  const { mode } = props;
+  console.log(mode);
   return (
     <Wrapper>
       {ITEM_DATA.map(({ src, alt, id }) => (
-        <Item key={id} src={src} alt={alt} />
+        <Item key={id} idx={id} src={src} alt={alt} />
       ))}
     </Wrapper>
   );
