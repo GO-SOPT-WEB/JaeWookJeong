@@ -9,12 +9,7 @@ import {
   Uk,
   Usa,
 } from "../assets";
-
-interface itemDataProps {
-  id: number;
-  src: string;
-  alt: string;
-}
+import { itemDataProps } from "../types/cardList";
 
 const ITEM_DATA: itemDataProps[] = [
   {
