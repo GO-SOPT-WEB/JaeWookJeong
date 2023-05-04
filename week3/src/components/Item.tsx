@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 interface ItemProps {
@@ -6,12 +6,18 @@ interface ItemProps {
   src: string;
   alt: string;
   count: number;
+  isClear: boolean;
 }
 const Item = (props: ItemProps) => {
-  const { idx, src, alt, count } = props;
+  const { idx, src, alt, count, isClear } = props;
   const [isFliped, setIsFliped] = useState(Array(count * 2).fill(false));
-
   const copyFliped = [...isFliped];
+
+  useEffect(() => {
+    if (isClear) {
+      setIsFliped(Array(count * 2).fill(false));
+    }
+  }, [isClear, count]);
 
   const handleFlip = (id: number) => {
     copyFliped[id] = !copyFliped[id];

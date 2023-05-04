@@ -5,15 +5,23 @@ import { itemDataProps } from "../types/cardList";
 interface ItemListProps {
   count: number;
   pasteDataList: itemDataProps[];
+  isClear: boolean;
 }
 
 const ItemList = (props: ItemListProps) => {
-  const { count, pasteDataList } = props;
+  const { count, pasteDataList, isClear } = props;
 
   return (
     <Wrapper>
       {pasteDataList.slice(0, count * 2).map(({ src, alt }, idx) => (
-        <Item key={idx} idx={idx} src={src} alt={alt} count={count} />
+        <Item
+          key={idx}
+          idx={idx}
+          src={src}
+          alt={alt}
+          count={count}
+          isClear={isClear}
+        />
       ))}
     </Wrapper>
   );
