@@ -3,20 +3,26 @@ import { Button } from "./common";
 
 interface HeaderProps {
   count: number;
+  score: number;
+  handleChangeCount: (mode: string) => void;
 }
 const Header = (props: HeaderProps) => {
-  const { count } = props;
+  const { count, score, handleChangeCount } = props;
 
   return (
-    <Wrapper>
-      <TitleBlock>
-        <HeaderTitle>나라 맞추기</HeaderTitle>
-        <ScoreText>0 / {count}</ScoreText>
-      </TitleBlock>
-      <ButtonStyle>
-        <Button text="reset" />
-      </ButtonStyle>
-    </Wrapper>
+    handleChangeCount && (
+      <Wrapper>
+        <TitleBlock>
+          <HeaderTitle>나라 맞추기</HeaderTitle>
+          <ScoreText>
+            {score} / {count}
+          </ScoreText>
+        </TitleBlock>
+        <ButtonStyle>
+          <Button text="RESET" handleChangeCount={handleChangeCount} />
+        </ButtonStyle>
+      </Wrapper>
+    )
   );
 };
 
