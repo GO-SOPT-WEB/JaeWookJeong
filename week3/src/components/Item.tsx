@@ -1,35 +1,45 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 interface ItemProps {
   idx: number;
   src: string;
   alt: string;
-  count: number;
+  card: number;
   isClear: boolean;
+  isFliped: number[];
+  isClicked: boolean;
+  setIsFliped: React.Dispatch<React.SetStateAction<number[]>>;
+  handlePushNumber: (idx: number, card: number) => void;
 }
 const Item = (props: ItemProps) => {
-  const { idx, src, alt, count, isClear } = props;
-  const [isFliped, setIsFliped] = useState(Array(count * 2).fill(false));
-  const copyFliped = [...isFliped];
+  const {
+    idx,
+    src,
+    alt,
+    card,
+    isClear,
+    isFliped,
+    isClicked,
+    setIsFliped,
+    handlePushNumber,
+  } = props;
 
   useEffect(() => {
     if (isClear) {
-      setIsFliped(Array(count * 2).fill(false));
+      setIsFliped([]);
     }
-  }, [isClear, count]);
-
-  const handleFlip = (id: number) => {
-    copyFliped[id] = !copyFliped[id];
-    setIsFliped(copyFliped);
-  };
+  }, [isClear, setIsFliped]);
 
   return (
     <Wrapper>
-      {isFliped[idx] ? (
-        <Image src={src} alt={alt} onClick={() => handleFlip(idx)} />
+      {isFliped.includes(idx) ? (
+        <Image src={src} alt={alt} />
       ) : (
-        <NonFlip onClick={() => handleFlip(idx)} />
+        <NonFlip
+          disabled={isClicked}
+          onClick={() => handlePushNumber(idx, card)}
+        />
       )}
     </Wrapper>
   );
@@ -48,9 +58,12 @@ const Image = styled.img`
   height: 100%;
 `;
 
-const NonFlip = styled.div`
+const NonFlip = styled.button`
   width: 100%;
   height: 100%;
 
+  border: none;
   background-color: ${({ theme }) => theme.colors.Color_Coral};
+
+  cursor: pointer;
 `;
