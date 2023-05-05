@@ -56,6 +56,7 @@ const Wrapper = styled.div`
   height: 20rem;
 
   border: 1rem solid ${({ theme }) => theme.colors.Color_Yellow};
+  border-radius: 1rem;
 `;
 const Image = styled.img<{ isRotate: boolean }>`
   width: 100%;
@@ -81,6 +82,7 @@ const NonFlip = styled.button`
   height: 100%;
 
   border: none;
+  border-radius: 1rem;
   background-color: ${({ theme }) => theme.colors.Color_Coral};
 
   cursor: pointer;
