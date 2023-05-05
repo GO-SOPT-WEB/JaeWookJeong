@@ -9,18 +9,19 @@ import { EASY_SCORE, HARD_SCORE, NORMAL_SCORE } from "../constants/totalScore";
 const Main = () => {
   const [count, setCount] = useState(EASY_SCORE);
   const [score, setScore] = useState(0);
+  const [isMode, setIsMode] = useState("");
   const [isClear, setIsClear] = useState(false);
   const [isFliped, setIsFliped] = useState<number[]>([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   let randomDataList: ItemDataInfo[] = [];
   let pasteDataList: ItemDataInfo[] = [];
-  randomDataList = ITEM_DATA.slice(0, count).sort(() => Math.random() - 0.5);
+  randomDataList = ITEM_DATA.sort(() => Math.random() - 0.5).slice(0, count);
   pasteDataList = [...randomDataList, ...randomDataList];
 
   const realDataList: ItemDataInfo[] = useMemo(() => {
     return pasteDataList.sort(() => Math.random() - 0.5);
-  }, [isClear]);
+  }, [isMode]);
 
   useEffect(() => {
     if (score === count) {
@@ -34,15 +35,19 @@ const Main = () => {
     switch (mode) {
       case "EASY":
         setCount(EASY_SCORE);
+        setIsMode(mode);
         break;
       case "NORMAL":
         setCount(NORMAL_SCORE);
+        setIsMode(mode);
         break;
       case "HARD":
         setCount(HARD_SCORE);
+        setIsMode(mode);
         break;
       default:
         setCount(EASY_SCORE);
+        setIsMode(mode);
     }
   };
 
