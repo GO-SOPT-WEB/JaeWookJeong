@@ -2,7 +2,7 @@ import {
   Brazil,
   China,
   Germany,
-  Japan,
+  France,
   Korea,
   North,
   Spain,
@@ -32,8 +32,8 @@ const ITEM_DATA: itemDataProps[] = [
   },
   {
     id: 4,
-    src: Japan,
-    alt: "japan",
+    src: France,
+    alt: "France",
     card: 4,
   },
   {
