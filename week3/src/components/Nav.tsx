@@ -7,6 +7,7 @@ interface NavProps {
 
 const Nav = (props: NavProps) => {
   const { handleChangeCount } = props;
+
   return (
     handleChangeCount && (
       <Wrapper>

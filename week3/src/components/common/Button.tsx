@@ -6,6 +6,7 @@ interface ButtonProps {
 }
 const Button = (props: ButtonProps) => {
   const { text, handleChangeCount } = props;
+
   return <Wrapper onClick={() => handleChangeCount(text)}>{text}</Wrapper>;
 };
 
