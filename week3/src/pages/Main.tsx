@@ -21,7 +21,7 @@ const Main = () => {
 
   const realDataList: ItemDataInfo[] = useMemo(() => {
     return pasteDataList.sort(() => Math.random() - 0.5);
-  }, [isMode]);
+  }, [isMode, isClear]);
 
   useEffect(() => {
     if (score === count) {
@@ -46,8 +46,8 @@ const Main = () => {
         setIsMode(mode);
         break;
       default:
-        setCount(EASY_SCORE);
-        setIsMode(mode);
+        window.location.reload();
+        break;
     }
   };
 
