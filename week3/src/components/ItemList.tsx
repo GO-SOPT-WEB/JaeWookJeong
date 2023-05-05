@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Item } from ".";
 import { itemDataProps } from "../types/cardList";
 import { useEffect, useState } from "react";
+import confetti from "canvas-confetti";
 
 interface ItemListProps {
   count: number;
@@ -17,6 +18,7 @@ const ItemList = (props: ItemListProps) => {
   const { count, realDataList, isClear, setScore, isFliped, setIsFliped } =
     props;
   const [isMatch, setIsMatch] = useState<number[]>([]);
+  const [isRotate, setIsRotate] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
@@ -24,6 +26,12 @@ const ItemList = (props: ItemListProps) => {
       setIsClicked(true);
       if (isMatch[0] === isMatch[1]) {
         setScore((prev) => prev + 1);
+        setIsRotate((prev) => !prev);
+        confetti({
+          particleCount: 150,
+          spread: 60,
+          zIndex: 1000,
+        });
         setIsMatch([]);
         setIsClicked(false);
       } else {
@@ -37,6 +45,7 @@ const ItemList = (props: ItemListProps) => {
   }, [isMatch, setIsFliped, isFliped, setScore]);
 
   const handlePushNumber = (idx: number, card: number) => {
+    setIsRotate((prev) => !prev);
     setIsMatch([...isMatch, card]);
     setIsFliped([...isFliped, idx]);
   };
@@ -55,6 +64,7 @@ const ItemList = (props: ItemListProps) => {
           setIsFliped={setIsFliped}
           handlePushNumber={handlePushNumber}
           isClicked={isClicked}
+          isRotate={isRotate}
         />
       ))}
     </Wrapper>

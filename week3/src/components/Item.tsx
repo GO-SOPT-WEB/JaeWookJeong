@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface ItemProps {
   idx: number;
@@ -9,6 +9,7 @@ interface ItemProps {
   isClear: boolean;
   isFliped: number[];
   isClicked: boolean;
+  isRotate: boolean;
   setIsFliped: React.Dispatch<React.SetStateAction<number[]>>;
   handlePushNumber: (idx: number, card: number) => void;
 }
@@ -21,6 +22,7 @@ const Item = (props: ItemProps) => {
     isClear,
     isFliped,
     isClicked,
+    isRotate,
     setIsFliped,
     handlePushNumber,
   } = props;
@@ -34,7 +36,7 @@ const Item = (props: ItemProps) => {
   return (
     <Wrapper>
       {isFliped.includes(idx) ? (
-        <Image src={src} alt={alt} />
+        <Image src={src} alt={alt} isRotate={isRotate} />
       ) : (
         <NonFlip
           disabled={isClicked}
@@ -48,14 +50,30 @@ const Item = (props: ItemProps) => {
 export default Item;
 
 const Wrapper = styled.div`
+  position: relative;
+
   width: 25rem;
   height: 20rem;
 
   border: 1rem solid ${({ theme }) => theme.colors.Color_Yellow};
 `;
-const Image = styled.img`
+const Image = styled.img<{ isRotate: boolean }>`
   width: 100%;
   height: 100%;
+  animation: vibration 0.1s;
+
+  ${({ isRotate }) =>
+    isRotate &&
+    css`
+      @keyframes vibration {
+        from {
+          transform: rotate(10deg);
+        }
+        to {
+          transform: rotate(-10deg);
+        }
+      }
+    `};
 `;
 
 const NonFlip = styled.button`
