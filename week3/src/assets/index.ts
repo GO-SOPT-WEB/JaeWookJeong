@@ -1,9 +1,9 @@
 export { default as Brazil } from "./brazil.jpeg";
 export { default as China } from "./china.jpeg";
 export { default as Germany } from "./germany.jpeg";
-export { default as Japan } from "./japan.jpeg";
 export { default as Korea } from "./Korea.jpeg";
 export { default as North } from "./north.jpeg";
 export { default as Spain } from "./spain.jpeg";
 export { default as Uk } from "./Uk.jpeg";
 export { default as Usa } from "./Usa.jpeg";
+export { default as France } from "./france.jpeg";
