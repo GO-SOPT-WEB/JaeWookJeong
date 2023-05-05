@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { Item } from ".";
-import { itemDataProps } from "../types/cardList";
+import { ItemDataInfo } from "../types/cardList";
 import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 
 interface ItemListProps {
   count: number;
-  realDataList: itemDataProps[];
+  realDataList: ItemDataInfo[];
   isClear: boolean;
   score: number;
   isFliped: number[];

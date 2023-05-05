@@ -2,22 +2,23 @@ import styled from "styled-components";
 import { useEffect, useMemo, useState } from "react";
 import { Header, ItemList, Nav } from "../components";
 import ITEM_DATA from "../constants/ItemData";
-import { itemDataProps } from "../types/cardList";
+import { ItemDataInfo } from "../types/cardList";
 import { FinalModal, Modal } from "../components/common";
+import { EASY_SCORE, HARD_SCORE, NORMAL_SCORE } from "../constants/totalScore";
 
 const Main = () => {
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(EASY_SCORE);
   const [score, setScore] = useState(0);
   const [isClear, setIsClear] = useState(false);
   const [isFliped, setIsFliped] = useState<number[]>([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  let randomDataList: itemDataProps[] = [];
-  let pasteDataList: itemDataProps[] = [];
+  let randomDataList: ItemDataInfo[] = [];
+  let pasteDataList: ItemDataInfo[] = [];
   randomDataList = ITEM_DATA.slice(0, count).sort(() => Math.random() - 0.5);
   pasteDataList = [...randomDataList, ...randomDataList];
 
-  const realDataList: itemDataProps[] = useMemo(() => {
+  const realDataList: ItemDataInfo[] = useMemo(() => {
     return pasteDataList.sort(() => Math.random() - 0.5);
   }, [isClear]);
 
@@ -32,16 +33,16 @@ const Main = () => {
     setIsClear(true);
     switch (mode) {
       case "EASY":
-        setCount(5);
+        setCount(EASY_SCORE);
         break;
       case "NORMAL":
-        setCount(7);
+        setCount(NORMAL_SCORE);
         break;
       case "HARD":
-        setCount(9);
+        setCount(HARD_SCORE);
         break;
       default:
-        setCount(5);
+        setCount(EASY_SCORE);
     }
   };
 

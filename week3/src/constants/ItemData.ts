@@ -9,9 +9,9 @@ import {
   Uk,
   Usa,
 } from "../assets";
-import { itemDataProps } from "../types/cardList";
+import { ItemDataInfo } from "../types/cardList";
 
-const ITEM_DATA: itemDataProps[] = [
+const ITEM_DATA: ItemDataInfo[] = [
   {
     id: 1,
     src: Brazil,

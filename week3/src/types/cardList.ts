@@ -1,4 +1,4 @@
-export interface itemDataProps {
+export interface ItemDataInfo {
   id: number;
   src: string;
   alt: string;
