@@ -136,6 +136,9 @@ export const reset = css`
   button {
     cursor: pointer;
   }
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`
