@@ -1,10 +1,10 @@
-import { WeatherList } from "../components";
+import { WeatherLayout } from "../components/Layout";
 
 const WeeklyWeather = () => {
   return (
-    <div>
-      <WeatherList />
-    </div>
+    <WeatherLayout>
+      <div>1</div>
+    </WeatherLayout>
   );
 };
 
