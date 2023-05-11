@@ -1,10 +1,16 @@
-import { WeatherList } from "../components";
+import { WeatherItem } from "../components";
+import { WeatherLayout } from "../components/Layout";
+import useGetDayWeather from "../lib/hooks/useGetDayWeather";
 
 const TodayWeather = () => {
+  const { weatherInfo } = useGetDayWeather();
+
   return (
-    <div>
-      <WeatherList />
-    </div>
+    weatherInfo && (
+      <WeatherLayout>
+        <WeatherItem weatherInfo={weatherInfo} />
+      </WeatherLayout>
+    )
   );
 };
 
