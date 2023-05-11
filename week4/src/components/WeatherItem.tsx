@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import { WEATER_TYPE } from "../constants/weather";
+import { WeatherInfo } from "../types/weather";
 
-const WeatherItem = () => {
+interface WeatherItemProps {
+  weatherInfo: WeatherInfo;
+}
+const WeatherItem = (props: WeatherItemProps) => {
+  const { weatherInfo } = props;
+  const { main } = weatherInfo;
   return (
     <StWrapper>
       <StDay>05-11</StDay>
@@ -9,23 +15,21 @@ const WeatherItem = () => {
       <StDayInfoBlock>
         <StDayDetailBlock>
           <StDayText>온도</StDayText>
-          <StDayText>1</StDayText>
+          <StDayText>{main.temp}</StDayText>
         </StDayDetailBlock>
         <StDayDetailBlock>
-          <StDayText>온도</StDayText>
-          <StDayText>1</StDayText>
+          <StDayText>체감 온도</StDayText>
+          <StDayText>{main.feels_like}</StDayText>
         </StDayDetailBlock>
         <StDayDetailBlock>
-          <StDayText>온도</StDayText>
-          <StDayText>1</StDayText>
+          <StDayText>최저 / 최고</StDayText>
+          <StDayText>
+            {main.temp_min} / {main.temp_max}
+          </StDayText>
         </StDayDetailBlock>
         <StDayDetailBlock>
-          <StDayText>온도</StDayText>
-          <StDayText>1</StDayText>
-        </StDayDetailBlock>
-        <StDayDetailBlock>
-          <StDayText>온도</StDayText>
-          <StDayText>1</StDayText>
+          <StDayText>구름</StDayText>
+          <StDayText>{weatherInfo.clouds.all}%</StDayText>
         </StDayDetailBlock>
       </StDayInfoBlock>
     </StWrapper>
@@ -70,5 +74,5 @@ const StDayDetailBlock = styled.li`
   }
 `;
 const StDayText = styled.span`
-  ${({ theme }) => theme.fonts.Noto_SB_Title_2}
+  ${({ theme }) => theme.fonts.Noto_M_Subtitle_1}
 `;
