@@ -1,7 +1,12 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = () => {
-  return <StWrapper>날씨 예보</StWrapper>;
+  return (
+    <Link to="/">
+      <StWrapper>날씨 예보</StWrapper>
+    </Link>
+  );
 };
 
 export default Header;
