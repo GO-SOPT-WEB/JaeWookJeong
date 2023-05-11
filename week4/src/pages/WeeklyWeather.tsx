@@ -1,5 +1,11 @@
+import { WeatherList } from "../components";
+
 const WeeklyWeather = () => {
-  return <div>주간 날씨</div>;
+  return (
+    <div>
+      <WeatherList />
+    </div>
+  );
 };
 
 export default WeeklyWeather;

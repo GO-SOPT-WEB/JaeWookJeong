@@ -1,5 +1,11 @@
+import { WeatherList } from "../components";
+
 const TodayWeather = () => {
-  return <div>오늘 날씨</div>;
+  return (
+    <div>
+      <WeatherList />
+    </div>
+  );
 };
 
 export default TodayWeather;
