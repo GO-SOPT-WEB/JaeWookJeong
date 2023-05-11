@@ -74,7 +74,7 @@ html {
 .aside_item {
   margin-bottom: 2rem;
 
-  border-bottom: 3px solid red;
+  border-bottom: 0.3rem solid red;
 
   cursor: pointer;
 }
@@ -125,7 +125,7 @@ html {
 
   padding: 1rem;
 
-  border: 1px solid black;
+  border: 0.1rem solid black;
 }
 .menu_image {
   width: 15rem;
