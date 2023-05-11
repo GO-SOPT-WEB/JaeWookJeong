@@ -50,8 +50,44 @@ const Input = () => {
 
 export default Input;
 
-const StWrapper = styled.section``;
+const StWrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  padding: 2rem;
+`;
 const StForm = styled.form``;
-const StSelect = styled.select``;
-const StInput = styled.input``;
-const StBtn = styled.button``;
+const StSelect = styled.select`
+  padding: 0.5rem;
+  margin-right: 1rem;
+
+  border: 0.2rem solid ${({ theme }) => theme.colors.Color_Coral};
+  border-radius: 0.5rem;
+
+  cursor: pointer;
+  outline: none;
+`;
+const StInput = styled.input`
+  padding: 1rem 4rem;
+  margin-right: 1rem;
+
+  border: none;
+  border-radius: 0.5rem;
+  background-color: ${({ theme }) => theme.colors.Color_Yellow};
+  ${({ theme }) => theme.fonts.Noto_M_Subtitle_3}
+
+  outline: none;
+`;
+const StBtn = styled.button`
+  padding: 1rem;
+
+  border: none;
+  border-radius: 0.5rem;
+  background-color: ${({ theme }) => theme.colors.Color_Coral};
+  color: ${({ theme }) => theme.colors.Color_White};
+  ${({ theme }) => theme.fonts.Noto_M_Subtitle_3}
+
+  cursor: pointer;
+`;
