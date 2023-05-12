@@ -3,12 +3,13 @@ import { WeatherItem } from "../components";
 import { WeatherLayout } from "../components/Layout";
 import useGetWeeklyWeather from "../lib/hooks/useGetWeeklyWeather";
 import { LandingItem } from "../components/Landing";
+import { Error } from "../components/common";
 
 const WeeklyWeather = () => {
   const landingArr: string[] = Array(5).fill("");
   const spliceDate = [0];
   const { area } = useParams() as { area: string };
-  const { weatherInfo, isLoading } = useGetWeeklyWeather(area);
+  const { weatherInfo, isLoading, isError } = useGetWeeklyWeather(area);
 
   if (weatherInfo) {
     const len = weatherInfo?.list.length / 5;
@@ -16,6 +17,8 @@ const WeeklyWeather = () => {
       spliceDate.push(spliceDate[i] + len);
     }
   }
+
+  if (isError) return <Error />;
 
   return (
     <WeatherLayout>
