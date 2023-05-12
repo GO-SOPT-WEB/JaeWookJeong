@@ -1,17 +1,28 @@
 import styled from "styled-components";
 import { WEATER_TYPE } from "../constants/weather";
 import { WeatherInfo } from "../types/weather";
+import { useEffect, useState } from "react";
 
 interface WeatherItemProps {
   weatherInfo: WeatherInfo;
 }
 const WeatherItem = (props: WeatherItemProps) => {
+  const [matchUrl, setMatchUrl] = useState("");
   const { weatherInfo } = props;
   const { main } = weatherInfo;
+
+  useEffect(() => {
+    for (let i = 0; i < WEATER_TYPE.length; i++) {
+      if (WEATER_TYPE[i].description === weatherInfo.weather[0].description) {
+        setMatchUrl(WEATER_TYPE[i].imgURL);
+      }
+    }
+  }, [weatherInfo.weather]);
+
   return (
     <StWrapper>
-      <StDay>05-11</StDay>
-      <StImage src={WEATER_TYPE[0].imgURL} />
+      <StDay>{weatherInfo.dt_txt?.slice(0, 10)}</StDay>
+      <StImage src={matchUrl} />
       <StDayInfoBlock>
         <StDayDetailBlock>
           <StDayText>온도</StDayText>
