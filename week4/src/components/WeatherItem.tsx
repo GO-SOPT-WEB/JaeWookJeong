@@ -9,33 +9,37 @@ interface WeatherItemProps {
 const WeatherItem = (props: WeatherItemProps) => {
   const [matchUrl, setMatchUrl] = useState("");
   const { weatherInfo } = props;
-  const { main } = weatherInfo;
+  const {
+    dt_txt,
+    main: { temp, feels_like, temp_min, temp_max },
+    weather: [{ description }],
+  } = weatherInfo;
 
   useEffect(() => {
     for (let i = 0; i < WEATER_TYPE.length; i++) {
-      if (WEATER_TYPE[i].description === weatherInfo.weather[0].description) {
+      if (WEATER_TYPE[i].description === description) {
         setMatchUrl(WEATER_TYPE[i].imgURL);
       }
     }
-  }, [weatherInfo.weather]);
+  }, [description]);
 
   return (
     <StWrapper>
-      <StDay>{weatherInfo.dt_txt?.slice(0, 10)}</StDay>
+      <StDay>{dt_txt?.slice(0, 10)}</StDay>
       <StImage src={matchUrl} />
       <StDayInfoBlock>
         <StDayDetailBlock>
           <StDayText>온도</StDayText>
-          <StDayText>{main.temp}</StDayText>
+          <StDayText>{temp}</StDayText>
         </StDayDetailBlock>
         <StDayDetailBlock>
           <StDayText>체감 온도</StDayText>
-          <StDayText>{main.feels_like}</StDayText>
+          <StDayText>{feels_like}</StDayText>
         </StDayDetailBlock>
         <StDayDetailBlock>
           <StDayText>최저 / 최고</StDayText>
           <StDayText>
-            {main.temp_min} / {main.temp_max}
+            {temp_min} / {temp_max}
           </StDayText>
         </StDayDetailBlock>
         <StDayDetailBlock>
